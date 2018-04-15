@@ -1,8 +1,9 @@
 var Silnik = {
-    ini:function() {
+    ini: function() {
         var skyCanvas = document.getElementById("sky-canvas");
         var bgCanvas = document.getElementById("bg-canvas");
         var fgCanvas = document.getElementById("fg-canvas");
+
         var canvas = {
             skyCanvas: skyCanvas,
             bgCanvas: bgCanvas,
@@ -10,10 +11,10 @@ var Silnik = {
             skyCtx: skyCanvas.getContext("2d"),
             bgCtx: bgCanvas.getContext("2d"),
             fgCtx: fgCanvas.getContext("2d"),
-        }
+        };
 
         var grafika = new Image();
-        grafika,src = "img/stylesheet.png";
+        grafika.src = "img/stylesheet.png";
 
         grafika.addEventListener("load", function() {
             var grafika = this;
@@ -25,15 +26,17 @@ var Silnik = {
             grafika: grafika
         };
 
+        Obiekty.ini(dane);
         Silnik.start(dane);
     },
+
     start: function(dane) {
         var petla = function() {
             Silnik.wejscie(dane);
             Silnik.aktualizacje(dane);
             Silnik.render(dane);
 
-            dane.nrKlatki ++;
+            dane.nrKlatki++;
 
             window.requestAnimationFrame(petla);
         };
@@ -46,11 +49,12 @@ var Silnik = {
     },
 
     aktualizacje: function(dane) {
-
+        Animacje.aktualizacja(dane);
+        Fizyka.aktualizacja(dane);
     },
 
     render: function(dane) {
-
+        Render.aktualizacja(dane);
     }
 };
 
