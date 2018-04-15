@@ -6,6 +6,7 @@ var Fizyka = {
 	
 	zadania: {
 		Grawitacja: function(obiekt) {
+            obiekt.obecnyStan = obiekt.stan.skakanie;
 			obiekt.pedY+=1;
 			obiekt.y+=obiekt.pedY;
 		},
@@ -29,7 +30,8 @@ var Fizyka = {
 			
 			if(obiekt.typ === "sciana") {
 				if(mario.y+mario.h>obiekt.y && mario.x+mario.w > obiekt.x+10 && mario.x < obiekt.x+obiekt.w-10 && mario.pedY >= 0) {
-					mario.y = obiekt.y - mario.h;
+                    mario.obecnyStan = mario.stan.stanie;
+                    mario.y = obiekt.y - mario.h;
 					mario.pedY = 0;
 				}
 			}
